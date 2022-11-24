@@ -24,6 +24,8 @@ const reSellToken = () => {
     const { data } = await axios.get(tokenURI);
 
     setImage(data.image);
+    setPrice(data.price);
+
   };
 
   useEffect(() => {
@@ -41,13 +43,13 @@ const reSellToken = () => {
   return (
     <div className={Style.reSellToken}>
       <div className={Style.reSellToken_box}>
-        <h1>ReSell Your Token, Set Price</h1>
+        <h1>Token wiederverkaufen, Preis festlegen</h1>
         <div className={formStyle.Form_box_input}>
-          <label htmlFor="name">Price</label>
+          <label htmlFor="name">Preis</label>
           <input
             type="number"
             min={1}
-            placeholder="reSell price"
+            placeholder="Weiter Verkauf preis"
             className={formStyle.Form_box_input_userName}
             onChange={(e) => setPrice(e.target.value)}
           />
@@ -60,7 +62,7 @@ const reSellToken = () => {
         </div>
 
         <div className={Style.reSellToken_box_btn}>
-          <Button btnName="Resell NFT" handleClick={() => resell()} />
+          <Button btnName="Wieder verkaufen NFT" handleClick={() => resell()} />
         </div>
       </div>
     </div>
