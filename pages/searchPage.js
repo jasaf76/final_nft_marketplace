@@ -13,18 +13,20 @@ import images from "../img";
 import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext";
 
 const searchPage = () => {
-  const { fetchNFTs, setError } = useContext(NFTMarketplaceContext);
+  const { fetchNFTs, setError,currentAccount,items } = useContext(NFTMarketplaceContext);
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
 
   useEffect(() => {
-    try {
-      fetchNFTs().then((items) => {
-        setNfts(items.reverse());
-        setNftsCopy(items);
-      });
-    } catch (error) {
-      setError("Please reload the browser", error);
+    if (currentAccount !== undefined ) {
+      try {
+        fetchNFTs().then((items) => {
+          setNfts(items.reverse());
+          setNftsCopy(items);
+        });
+      } catch (error) {
+        setError("Please reload the browser", error);
+      }
     }
   }, []);
 

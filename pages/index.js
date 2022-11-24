@@ -30,15 +30,17 @@ const Home = () => {
     checkIfWalletConnected();
   }, []);
 
-  const { fetchNFTs } = useContext(NFTMarketplaceContext);
+  const { fetchNFTs,currentAccount,items } = useContext(NFTMarketplaceContext);
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
 
   useEffect(() => {
-    fetchNFTs().then((items) => {
-      setNfts(items.reverse());
-      setNftsCopy(items);
-    });
+    if (currentAccount && items === undefined	) {
+      fetchNFTs().then((items) => {
+        setNfts(items.reverse());
+        setNftsCopy(items);
+      })
+    }
   }, []);
 
   //CREATOR LIST

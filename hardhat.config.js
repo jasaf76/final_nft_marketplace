@@ -6,8 +6,10 @@ module.exports = {
   networks: {
     hardhat: {},
     polygon_mumbai: {
-      url: "Your alchemy url",
-      accounts: [`0x${"Your private key here"}`],
+      url: "https://polygon-mumbai.infura.io/v3/95c61446ddd64bcf96ff33cbc4040433",
+      accounts: [
+        `0x${"df57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e"}`,
+      ],
     },
   },
 };

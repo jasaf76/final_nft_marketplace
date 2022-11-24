@@ -177,7 +177,7 @@ const NFTDescription = ({ nft }) => {
               />
               <div className={Style.NFTDescription_box_profile_box_left_info}>
                 <small>Creator</small> <br />
-                <Link href={{ pathname: "/author", query: `${nft.seller}` }}>
+                <Link  href={{ pathname: "/author", query: `${nft.seller}` }}>
                   <span>
                     Karli Costa <MdVerified />
                   </span>

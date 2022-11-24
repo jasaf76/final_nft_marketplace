@@ -18,7 +18,9 @@
 .NFTDescription_box_share_box_icon{
     cursor: pointer;
 }
-
+.pointer {
+    cursor: pointer;
+}
 .NFTDescription_box_share_box_social{
     position: absolute;
     top: 5rem;
@@ -70,6 +72,7 @@
     align-items: center;
     gap: 2rem;
     padding-bottom: 1.5rem;
+    cursor:pointer;
 }
 
 .NFTDescription_box_profile_box_left{
@@ -83,6 +86,7 @@
 .NFTDescription_box_profile_box_right_info small,
 .NFTDescription_box_profile_box_left_info small{
     font-weight: 500;
+    cursor: pointer;
 }
 
 .NFTDescription_box_profile_box_right_info span,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Wenb3Modal from "web3modal";
+import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -7,13 +7,13 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 
 // const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
-const projectId = "Your Project Id";
-const projectSecretKey = "Your project secret Key";
+const projectId = "2Hj8QCQxalH4hpQpwzCYsei1kav";
+const projectSecretKey = "7b6dff57a70839fa1aba6309a3d195ee";
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecretKey}`).toString(
   "base64"
 )}`;
 
-const subdomain = "your sub domain";
+const subdomain ="https://carednewhope-marketplace.infura-ipfs.io";
 
 const client = ipfsHttpClient({
   host: "infura-ipfs.io",
@@ -39,7 +39,7 @@ const fetchContract = (signerOrProvider) =>
 
 const connectingWithSmartContract = async () => {
   try {
-    const web3Modal = new Wenb3Modal();
+    const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();

@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["daulat-nft-marketplace.infura-ipfs.io", "infura-ipfs.io"],
+    loader:'default',
+    domains: ["carednewhope-marketplace.infura-ipfs.io", "infura-ipfs.io"],
   },
 };
 
