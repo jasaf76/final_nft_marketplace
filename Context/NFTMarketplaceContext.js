@@ -25,7 +25,7 @@ const client = ipfsHttpClient({
 });
 
 //INTERNAL  IMPORT
-import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
+import { NFTMarketplaceAddress, NFTMarketplaceABI, transferFundsAddress, transferFundsABI } from "./constants";
 
 //---FETCHING SMART CONTRACT
 const fetchContract = (signerOrProvider) =>
@@ -36,6 +36,12 @@ const fetchContract = (signerOrProvider) =>
   );
 
 //---CONNECTING WITH SMART CONTRACT
+const fetchTransferFundsContract = (signerOrProvider) =>
+  new ethers.Contract(
+    transferFundsAddress,
+    transferFundsABI,
+    signerOrProvider
+  );
 
 const connectingWithSmartContract = async () => {
   try {
@@ -49,6 +55,21 @@ const connectingWithSmartContract = async () => {
     console.log("Something went wrong while connecting with contract");
   }
 };
+
+ //CONNECT TO---TRANSFER_FUNDS
+const connectToTransferFunds = async () => {
+  try {
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+    const contract = fetchTransferFundsContract(signer);
+    return contract;
+  } catch (error) {
+    console.log("Something went wrong while connecting with contract");
+  }
+};
+// TRANSFER_FUNDS
 
 export const NFTMarketplaceContext = React.createContext();
 
@@ -273,7 +294,37 @@ export const NFTMarketplaceProvider = ({ children }) => {
       setOpenError(true);
     }
   };
+//------------------------------------------------------------------------
+  //---TRANSFER_FUNDS
 
+  const [transaction, setTransaction] = useState("");
+  const [transactionCount, setTransactionCount] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const transferEther = async (address, ether, message) => { 
+    try {
+      if (currentAccount) {
+        console.log(address,ether,message)
+        const contract = await connectToTransferFunds()
+        // const unFormatedPrice = ethers.utils.parseEther(ether)
+        // //FIRST METHOD TO TRANSFER FUND
+        // await ethereum.request({
+        //   method: "ether_sendTransaction",
+        //   params: [
+        //     {
+        //       from: currentAccount,
+        //       to: address,
+        //       gas: "0x5208",
+        //       value: unFormatedPrice._hex,
+        //     },
+        //   ],
+        // });
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+    
   return (
     <NFTMarketplaceContext.Provider
       value={{
@@ -290,6 +341,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
         setOpenError,
         openError,
         error,
+        transferEther,
+        loading,
       }}
     >
       {children}

@@ -11,7 +11,8 @@ async function main() {
 
   await transferFunds.deployed();
 
-  console.log(` deployed contract Address ${transferFunds.address}`);
+  console.log(` deployed contract TRANSFER ${transferFunds.address}`);
+  console.log(` NFTMarketplace contract Address ${nftMarketplace.address}`);
 }
 
 main().catch((error) => {

@@ -42,8 +42,7 @@ const Form = () => {
               id=""
               cols="30"
               rows="6"
-              placeholder="something about yourself in few words"
-            ></textarea>
+              placeholder="Ihre Verwendungszweck"></textarea>
           </div>
 
           <div className={Style.Form_box_input}>
@@ -64,7 +63,7 @@ const Form = () => {
                 <div className={Style.Form_box_input_box_icon}>
                   <TiSocialFacebook />
                 </div>
-                <input type="text" placeholder="http://shoaib" />
+                <input type="text" placeholder="http://carednewhope.com" />
               </div>
             </div>
             <div className={Style.Form_box_input}>
