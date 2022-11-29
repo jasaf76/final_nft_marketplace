@@ -201,7 +201,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       // console.log(items);
       return items;
     } catch (error) {
-      setError("Error while fetching NFTS");
+      setError("Fehler beim Abrufen von NFTS");
       setOpenError(true);
     }
   };

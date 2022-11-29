@@ -35,7 +35,7 @@ const Home = () => {
   const [nftsCopy, setNftsCopy] = useState([]);
 
   useEffect(() => {
-    if (currentAccount && items === undefined	) {
+    if (currentAccount) {
       fetchNFTs().then((items) => {
         setNfts(items.reverse());
         setNftsCopy(items);
