@@ -16,17 +16,20 @@ const transferFunds = () => {
   const [transferAccount, setTransferAccount] = useState("");
   const [readMessage, setReadMessage] = useState("");
   const [openBox, setOpenBox] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  
 
   const transactionPrueba = [1, 2, 3, 5, 6, 454];
   return (
-    <div className={formStyle.transfer}>
-      <div className={formStyle.transfer_box}>
+    <div className={Style.transfer}>
+      <div className={Style.transfer_box}>
         <h1>transfer Ether</h1>
         <p>lore</p>
-        <div className={formStyle.transfer_box_box}>
+        <div className={Style.transfer_box_box}>
           <div className={formStyle.transfer_box_box_left}>
             <Image
-              src={images.transfer}
+              src={images.transfer2}
               alt="images"
               width={400}
               height={400}
@@ -93,17 +96,17 @@ const transferFunds = () => {
             </div>
           </div>
         </div>
-        //TRANSACTION HISTORY
+        {/* //TRANSACTION HISTORY */}
         <h1 className={Style.transfer_box_h1}>Transaktionsverlauf</h1>
         <p>
           dflkajfsdlköjflkdasjflkdasjfalköadsjlköfgvdjsdfa
           dskfdsliköjfdsoikjfvoasidujfoidsajfvoisadjfoiadsj
         </p>
         <div className={Style.transfer_box_history}>
-          {transactions.map((el, i) => (
+          {transactionPrueba.map((el, i) => (
             <div className={Style.transfer_box_history_item} key={i + 1}>
               <Image
-                src={images.transferEther}
+                src={images.a}
                 width={100}
                 height={100}
                 alt="image"
@@ -124,10 +127,9 @@ const transferFunds = () => {
 
                 <Button
                   btnName="Message"
-                  handleClick={
-                    (() => setReadMessage("muy bonito pripito"),
-                    setOpenBox(true))
-                  }
+                  handleClick={() => (
+                    setReadMessage("muy bonito pripito"), setOpenBox(true)
+                  )}
                   classStyle={Style.readButton}
                 />
               </div>
@@ -138,9 +140,9 @@ const transferFunds = () => {
           ""
         ) : (
           <div className={Style.messageBox} onClick={() => setOpenBox(false)}>
-              <div className={Style.messageBox_box}>
-                <h1>Nachrichten des Transaktionen</h1>
-                <p>Ihre Nachricht</p>
+            <div className={Style.messageBox_box}>
+              <h1>Nachrichten des Transaktionen</h1>
+              <p>Ihre Nachricht</p>
             </div>
           </div>
         )}

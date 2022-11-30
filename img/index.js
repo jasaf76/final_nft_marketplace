@@ -55,7 +55,8 @@ import founder3 from "./founder3.jpg";
 import founder4 from "./founder4.jpg";
 import loader from "./loadergif.gif";
 import errorgif from "./error.gif";
-
+import a from "./a.png"
+import transfer2 from "./transfer2.gif"
 export default {
   hero2,
   founder1,
@@ -114,4 +115,6 @@ export default {
   zgcmq,
   loader,
   errorgif,
+  a,
+  transfer2,
 };

@@ -1,0 +1,13 @@
+.transfer{
+  width: 100%;
+  margin-block:2rem;
+}
+.transfer_box{
+  width: 80%;
+  margin: 0 auto;
+}
+.transfer_box_box {
+  display:grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap:3rem;
+}
