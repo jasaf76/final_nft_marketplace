@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+
   images: {
-    loader:'default',
+    unoptimized:true,
     domains: ["carednewhope-marketplace2.infura-ipfs.io", "infura-ipfs.io"],
   },
 };
