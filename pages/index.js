@@ -30,12 +30,12 @@ const Home = () => {
     checkIfWalletConnected();
   }, []);
 
-  const { fetchNFTs,currentAccount,items } = useContext(NFTMarketplaceContext);
+  const { fetchNFTs,currentAccount } = useContext(NFTMarketplaceContext);
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
 
   useEffect(() => {
-    if (currentAccount && items) {
+    if (currentAccount) {
       fetchNFTs().then((items) => {
         setNfts(items.reverse());
         setNftsCopy(items);

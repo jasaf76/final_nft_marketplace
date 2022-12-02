@@ -11,23 +11,31 @@ import { Button, Loader } from "../components/componentsindex";
 import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext";
 
 const transferFunds = () => {
-  const { currentAccount, transferEther } = useContext(NFTMarketplaceContext);
+  const {
+    currentAccount,
+    transferEther,
+    loading,
+    accountBalance,
+    transactions,
+    getAllTransactions,
+  } = useContext(NFTMarketplaceContext);
   const [transferAmount, setTransferAmount] = useState("");
   const [transferAccount, setTransferAccount] = useState("");
   const [readMessage, setReadMessage] = useState("");
   const [openBox, setOpenBox] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  
+  //const transactionPrueba = [1, 2, 3, 5, 6, 454];
 
-  const transactionPrueba = [1, 2, 3, 5, 6, 454];
+  useEffect(() => {
+    getAllTransactions()
+  })
   return (
     <div className={Style.transfer}>
       <div className={Style.transfer_box}>
         <h1>transfer Ether</h1>
         <p>lore</p>
         <div className={Style.transfer_box_box}>
-          <div className={formStyle.transfer_box_box_left}>
+          <div className={Style.transfer_box_box_left}>
             <Image
               src={images.transfer2}
               alt="images"
@@ -35,16 +43,16 @@ const transferFunds = () => {
               height={400}
             />
           </div>
-          <div className={formStyle.transfer_box_box_right}>
+          <div className={Style.transfer_box_box_right}>
             <h2>Sie können ihre Coins transferieren </h2>
-            <div className={formStyle.transfer_box_box_right_info}>
-              <p className={formStyle.transfer_box_box_right_info_desktop}>
-                Account
+            <div className={Style.transfer_box_box_right_info}>
+              <p className={Style.transfer_box_box_right_info_desktop}>
+                Account: {currentAccount}
               </p>
-              <p className={formStyle.transfer_box_box_right_info_mobile}>
-                Account
+              <p className={Style.transfer_box_box_right_info_mobile}>
+                Account {currentAccount.slice(1, 30)}..
               </p>
-              <p>Bilanz: 111 ETH</p>
+              <p>Bilanz: {accountBalance} ETH</p>
             </div>
             {/* TRANSFER FIELDS */}
             <div className={formStyle.transfer_box_box_right_box}>
@@ -80,7 +88,7 @@ const transferFunds = () => {
                   cols="30"
                   rows="6"
                   placeholder="something about yourself in few words"
-                  onChange={(e) => setMessage(e.target.value)}></textarea>
+                  onChange={(e) => setReadMessage(e.target.value)}></textarea>
               </div>
               {loading ? (
                 <Loader />
@@ -88,7 +96,7 @@ const transferFunds = () => {
                 <Button
                   btnName="Transfer Funds"
                   handleClick={() =>
-                    transferEther(transferAccount, transferAmount, message)
+                    transferEther(transferAccount, transferAmount, readMessage)
                   }
                   classStyle={Style.button}
                 />
@@ -103,32 +111,27 @@ const transferFunds = () => {
           dskfdsliköjfdsoikjfvoasidujfoidsajfvoisadjfoiadsj
         </p>
         <div className={Style.transfer_box_history}>
-          {transactionPrueba.map((el, i) => (
+          {transactions && transactions.map((el, i) => (
             <div className={Style.transfer_box_history_item} key={i + 1}>
-              <Image
-                src={images.a}
-                width={100}
-                height={100}
-                alt="image"
-              />
+              <Image src={images.a} width={200} height={200} alt="image" />
               <div className={Style.transfer_box_history_item_info}>
                 <p>
-                  <span>Transfer ID:</span> #1
+                  <span>Transfer ID:</span> #{i + 1} {el.timestamp}
                 </p>
                 <p>
-                  <span>Amount:</span> #2
+                  <span>Amount:</span> {el.amount}
                 </p>
                 <p>
-                  <span>From:</span> #3
+                  <span>From:</span> {el.addressFrom}
                 </p>
                 <p>
-                  <span>To:</span> #4
+                  <span>To:</span> {el.addressTo}
                 </p>
 
                 <Button
                   btnName="Message"
                   handleClick={() => (
-                    setReadMessage("muy bonito pripito"), setOpenBox(true)
+                    setReadMessage(el.message), setOpenBox(true)
                   )}
                   classStyle={Style.readButton}
                 />
@@ -141,8 +144,8 @@ const transferFunds = () => {
         ) : (
           <div className={Style.messageBox} onClick={() => setOpenBox(false)}>
             <div className={Style.messageBox_box}>
-              <h1>Nachrichten des Transaktionen</h1>
-              <p>Ihre Nachricht</p>
+                <h1 className={Style.messageBox_box_box_h1}>Nachrichten des Transaktionen </h1>
+                <p>{readMessage}</p>
             </div>
           </div>
         )}

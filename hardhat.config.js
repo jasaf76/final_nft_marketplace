@@ -4,11 +4,12 @@ require("@nomicfoundation/hardhat-toolbox");
 module.exports = {
   solidity: "0.8.17",
   networks: {
-    hardhat: {},
+    //hardhat: {},
+    // chainId: 80001,
     polygon_mumbai: {
-      url: "https://polygon-mumbai.infura.io/v3/95c61446ddd64bcf96ff33cbc4040433",
+      url: "https://polygon-mumbai.g.alchemy.com/v2/QGAA7s6XfIq-NkPgUn_slcdjandoswia",
       accounts: [
-        `0x${"df57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e"}`,
+        `0x${"b83f1b99a3203d680f03cce225398dabed1342a18656b78c752b7e341ebd7148"}`,
       ],
     },
   },

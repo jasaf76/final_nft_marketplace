@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     loader:'default',
-    domains: ["carednewhope-marketplace.infura-ipfs.io", "infura-ipfs.io"],
+    domains: ["carednewhope-marketplace2.infura-ipfs.io", "infura-ipfs.io"],
   },
 };
 

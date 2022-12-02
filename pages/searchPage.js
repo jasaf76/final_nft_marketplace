@@ -18,7 +18,7 @@ const searchPage = () => {
   const [nftsCopy, setNftsCopy] = useState([]);
 
   useEffect(() => {
-    if (currentAccount && items) {
+    if (currentAccount.nfts) {
       try {
         fetchNFTs().then((items) => {
           setNfts(items.reverse());
