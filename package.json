@@ -1,5 +1,6 @@
 {
-  "name": "nfttemplatevideo",
+  "name": "final_nft_marketplace",
+  "homepage":".",
   "version": "0.1.0",
   "private": true,
   "scripts": {
